@@ -1,0 +1,20 @@
+create table task(task_id int primary key,task_name varchar(50));
+
+insert into task(task_id,task_name) values (001, 'weather_api'), (002, 'calculator'), (003, 'price_card'), (004, 'cart'), (005, 'form');
+
+describe task;
+
+create table  student(stud_id int primary key, stud_name varchar(50), stud_email varchar(50), batch_id int, task_id int,
+foreign key(task_id) references task (task_id));
+
+insert into student(stud_id, stud_name, stud_email, batch_id, task_id) values (101, 'priya', 'p.gmail.com', 1, 001), (102, 'vicky', 'v.gmail.com', 2, 002), (103, 'appu', 'a.gmail.com', 2, 003), (104, 'kumar', 'k.gmail.com', 1, 004), (105, 'balu', 'b.gmail.com', 1, 005);
+
+describe student;
+
+create table mentors(men_id int primary key, men_name varchar(50), batch_id int, stud_id int, 
+foreign key(stud_id, batch_id) references student ( stud_id,batch,id)
+);
+
+insert into mentors(men_id, men_name, batch_id, stud_id) values (11, 'thiru' ,1, 101),(12, 'chandra', 2, 103); 
+
+describe mentors;
